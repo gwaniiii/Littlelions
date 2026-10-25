@@ -1,347 +1,184 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAISON EOMMA | 엄마를 위한 특별한 선물</title>
+<title>선희 특별관리위원회</title>
 <style>
-:root {
-  --cream:#f8f3ea; --paper:#fffdf8; --ink:#29251f;
-  --gold:#b18a50; --rose:#b66b69; --line:#e7dfd2;
+* {
+  box-sizing: border-box;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
 body {
-  margin:0; background:var(--cream); color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
-}
-button,a { font:inherit; }
-button { cursor:pointer; }
-.top {
-  padding:10px; text-align:center; background:var(--ink);
-  color:#f8f0e3; font-size:11px; letter-spacing:2px;
+  margin: 0;
+  font-family: Arial, "Apple SD Gothic Neo", sans-serif;
+  background: linear-gradient(135deg, #fff0f5, #f0f8ff);
+  color: #333;
+  text-align: center;
 }
 header {
-  position:sticky; top:0; z-index:5; background:#f8f3eaf2;
-  border-bottom:1px solid var(--line); padding:18px 6%;
-  display:flex; justify-content:space-between; align-items:center;
+  padding: 55px 20px 35px;
+  background: linear-gradient(135deg, #ff8fab, #ffc2d1);
+  color: white;
 }
-.logo { font-family:Georgia,serif; font-size:21px; letter-spacing:3px; }
-.logo small { display:block; text-align:center; font-size:8px; margin-top:5px; }
-nav { display:flex; gap:20px; align-items:center; }
-nav a { color:inherit; text-decoration:none; font-size:12px; }
-nav button { background:none; border:1px solid var(--ink); padding:9px 12px; }
-.hero {
-  max-width:1200px; margin:auto; padding:65px 6%;
-  display:grid; grid-template-columns:1fr 1fr; gap:45px; align-items:center;
+.badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border: 1px solid white;
+  border-radius: 30px;
+  font-size: 13px;
 }
-.eyebrow { color:var(--gold); font-size:10px; letter-spacing:3px; font-weight:bold; }
 h1 {
-  font:normal clamp(38px,5vw,65px)/1.3 Georgia,"Noto Serif KR",serif;
-  margin:22px 0;
+  font-size: clamp(30px, 7vw, 48px);
+  margin: 22px 0 12px;
 }
-h1 em { color:var(--rose); font-style:normal; }
-p { line-height:1.9; color:#777067; font-size:14px; }
-.primary {
-  display:inline-block; margin-top:17px; padding:15px 22px;
-  background:var(--ink); color:white; border:0; text-decoration:none;
+header p {
+  font-size: 16px;
+  line-height: 1.8;
 }
-.art {
-  min-height:360px; position:relative; overflow:hidden;
-  display:grid; place-items:center;
-  background:linear-gradient(140deg,#e8d9c3,#f6eee2,#d4bea0);
+main {
+  max-width: 760px;
+  margin: 30px auto;
+  padding: 0 16px;
 }
-.sun {
-  position:absolute; width:230px; height:230px; border-radius:50%;
-  background:#fff5e1; top:30px; right:10%;
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 18px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px #0000000c;
+  text-align: left;
 }
-.bag {
-  position:relative; width:175px; height:190px; z-index:1;
-  border-radius:12px 12px 20px 20px;
-  background:linear-gradient(110deg,#886343,#d4b08a,#9b7654);
-  box-shadow:15px 20px 35px #0002; transform:rotate(-5deg);
+.card h2 {
+  margin-top: 0;
+  color: #e75480;
 }
-.bag:before {
-  content:""; position:absolute; width:85px; height:70px;
-  left:38px; top:-55px; border:8px solid #987650;
-  border-bottom:0; border-radius:50px 50px 0 0;
+.notice {
+  border-left: 5px solid #ff8fab;
 }
-.bag:after {
-  content:"M E"; position:absolute; top:80px; left:0; right:0;
-  text-align:center; color:#f8e7c9; font:22px Georgia,serif;
-  letter-spacing:5px;
+button {
+  border: none;
+  border-radius: 14px;
+  background: #e75480;
+  color: white;
+  padding: 15px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 6px;
 }
-.art-label {
-  position:absolute; bottom:20px; font:11px Georgia,serif;
-  letter-spacing:3px; color:#715b43;
+button:hover {
+  opacity: 0.85;
 }
-.benefits {
-  display:flex; justify-content:center; flex-wrap:wrap; gap:25px;
-  border-block:1px solid var(--line); padding:22px 10px;
-  font-size:11px; color:#6c645a;
+.result {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 15px;
+  background: #fff0f5;
+  line-height: 1.9;
+  display: none;
 }
-.benefits span:before { content:"✦ "; color:var(--gold); }
-section.collection { max-width:1200px; margin:auto; padding:75px 5%; }
-.heading { text-align:center; margin-bottom:35px; }
-.heading h2 { font:normal 38px Georgia,"Noto Serif KR",serif; }
-.heading p { font-size:13px; }
-.products { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.product { padding:12px; background:var(--paper); border:1px solid var(--line); }
-.product-art {
-  height:220px; display:grid; place-items:center; position:relative;
-  background:#eee5d7; overflow:hidden;
-}
-.product-art.pink { background:#f0e1dc; }
-.product-art.green { background:#e3e6db; }
-.product-art.blue { background:#e0e5e8; }
-.tag { position:absolute; top:12px; left:12px; background:white; padding:7px; font-size:9px; letter-spacing:1px; }
-.mini-bag {
-  width:105px; height:115px; background:linear-gradient(120deg,#9d7457,#d6b08b,#99704f);
-  border-radius:8px 8px 14px 14px; position:relative;
-}
-.mini-bag:before {
-  content:""; position:absolute; width:48px; height:40px;
-  left:24px; top:-33px; border:6px solid #9b7958;
-  border-bottom:0; border-radius:35px 35px 0 0;
-}
-.mini-bag:after {
-  content:"M"; position:absolute; top:45px; left:0; right:0;
-  text-align:center; font:22px Georgia,serif; color:#f7e5c7;
-}
-.voucher {
-  width:160px; height:100px; background:#fff9ed;
-  border:1px solid #c5a777; display:grid; place-content:center;
-  text-align:center; transform:rotate(-4deg); color:#755c3d;
-}
-.voucher strong { font:18px Georgia,"Noto Serif KR",serif; font-weight:normal; }
-.voucher small { margin-top:10px; font-size:8px; letter-spacing:2px; }
-.heart {
-  font-size:90px; color:var(--rose);
-  text-shadow:8px 12px 20px #6c3c3c30;
-}
-.info { padding:17px 5px 5px; }
-.name { font:20px Georgia,"Noto Serif KR",serif; margin-bottom:8px; }
-.desc { font-size:12px; min-height:43px; line-height:1.7; }
-.price-row { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:14px; }
-.price { font-size:12px; font-weight:bold; }
-.price del { color:#aaa; font-weight:normal; }
-.add { padding:9px; border:1px solid #cfc4b4; background:transparent; font-size:10px; }
-.add:hover { background:var(--ink); color:white; }
-.story { background:var(--ink); color:#f8f0e3; text-align:center; padding:65px 20px; }
-.story h2 { font:normal clamp(28px,4vw,42px)/1.5 Georgia,"Noto Serif KR",serif; }
-.story strong { color:#e9c78d; }
-.story p { color:#c9c0b2; }
-footer { padding:30px 15px; text-align:center; font-size:10px; line-height:1.9; color:#92897d; }
-.backdrop {
-  position:fixed; inset:0; z-index:10; display:none;
-  align-items:center; justify-content:center; padding:20px;
-  background:#17130fd9;
-}
-.backdrop.show { display:flex; }
-.modal {
-  width:min(440px,100%); padding:35px 25px; background:var(--paper);
-  text-align:center; position:relative;
-}
-.close { position:absolute; right:12px; top:8px; border:0; background:none; font-size:25px; }
-.modal .heart-icon { font-size:40px; color:var(--rose); }
-.modal h3 { font:normal 30px Georgia,"Noto Serif KR",serif; }
-.modal p { font-size:13px; }
-.toast {
-  position:fixed; z-index:20; bottom:20px; left:50%;
-  transform:translateX(-50%); background:var(--ink); color:white;
-  padding:13px 18px; font-size:12px; display:none;
-  width:max-content; max-width:90%;
-}
-.toast.show { display:block; }
-@media(max-width:750px) {
-  header { padding:14px 4%; }
-  .logo { font-size:16px; letter-spacing:2px; }
-  nav { gap:9px; } nav a { display:none; }
-  nav button { font-size:11px; padding:8px; }
-  .hero { grid-template-columns:1fr; padding:35px 6%; gap:30px; }
-  .art { min-height:290px; grid-row:1; }
-  h1 { font-size:43px; }
-  .benefits { gap:12px; font-size:10px; }
-  section.collection { padding:50px 4%; }
-  .heading h2 { font-size:30px; }
-  .products { grid-template-columns:1fr; gap:15px; }
-  .product { display:grid; grid-template-columns:40% 60%; padding:8px; }
-  .product-art { height:205px; }
-  .info { padding:12px; min-width:0; }
-  .name { font-size:17px; }
-  .desc { font-size:11px; min-height:0; }
-  .price-row { flex-direction:column; align-items:stretch; }
-  .add { width:100%; }
+footer {
+  padding: 30px 15px;
+  font-size: 12px;
+  color: #888;
 }
 </style>
 </head>
 <body>
-<div class="top">MAISON EOMMA ✦ 세상에서 가장 특별한 사람을 위한 셀렉션</div>
 <header>
-  <div class="logo">MAISON EOMMA<small>THE HOUSE OF MOM</small></div>
-  <nav>
-    <a href="#collection">COLLECTION</a>
-    <a href="#story">OUR STORY</a>
-    <button id="cartBtn">장바구니 <span id="cartCount">0</span></button>
-  </nav>
+  <span class="badge">긴급 · 대외비 · 선희 전용</span>
+  <h1>📢 선희 특별관리위원회</h1>
+  <p>
+    선희님의 행복과 평화를 위한<br>
+    공식 특별 공지사항
+  </p>
 </header>
-
 <main>
-<section class="hero">
-  <div>
-    <div class="eyebrow">A LITTLE LUXURY, A LOT OF LOVE</div>
-    <h1>엄마에게<br>세상에서 가장<br><em>특별한 선물</em>을.</h1>
-    <p>매일 가족을 위해 애쓰는 엄마에게, 오늘만큼은 가장 귀한 대접을. 메종 엄마가 엄선한 세상 단 하나뿐인 럭셔리를 만나보세요.</p>
-    <a class="primary" href="#collection">컬렉션 둘러보기 ↗</a>
-  </div>
-  <div class="art" aria-label="고급스러운 가방 일러스트">
-    <div class="sun"></div><div class="bag"></div>
-    <div class="art-label">EXCLUSIVELY FOR THE BEST MOM</div>
-  </div>
-</section>
-
-<div class="benefits">
-  <span>엄마 한정 에디션</span><span>사랑으로 검수 완료</span>
-  <span>반품 불가: 사랑은 영원하니까</span>
-</div>
-
-<section class="collection" id="collection">
-  <div class="heading">
-    <div class="eyebrow">THE MOM COLLECTION</div>
-    <h2>엄마를 위한 시그니처 아이템</h2>
-    <p>가격으로는 매길 수 없는 가치, 오늘 특별히 준비했습니다.</p>
-  </div>
-
-  <div class="products">
-    <article class="product">
-      <div class="product-art"><span class="tag">BEST SELLER</span><div class="mini-bag"></div></div>
-      <div class="info">
-        <div class="name">시그니처 효도백</div>
-        <div class="desc">아들의 사랑과 아직 부족한 철이 넉넉하게 수납되는 가방.</div>
-        <div class="price-row"><div class="price"><del>₩9,900,000</del> ₩0</div><button class="add" data-item="시그니처 효도백">장바구니 담기 +</button></div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-art pink"><span class="tag">LIMITED EDITION</span><div class="voucher"><strong>엄마 휴식권</strong><small>ONE DAY OFF</small></div></div>
-      <div class="info">
-        <div class="name">프리미엄 휴식 바우처</div>
-        <div class="desc">아들이 설거지와 청소를 맡는 특별 이용권.</div>
-        <div class="price-row"><div class="price">₩0 <small>(아들이 실행)</small></div><button class="add" data-item="프리미엄 휴식 바우처">장바구니 담기 +</button></div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-art green"><span class="tag">FOREVER PIECE</span><div class="voucher"><strong>평생 심부름권</strong><small>VALID FOREVER*</small></div></div>
-      <div class="info">
-        <div class="name">평생 심부름 멤버십</div>
-        <div class="desc">물 떠오기부터 무거운 짐 들기까지. *아들이 집에 있을 때 유효.</div>
-        <div class="price-row"><div class="price">가격 협의</div><button class="add" data-item="평생 심부름 멤버십">장바구니 담기 +</button></div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-art blue"><span class="tag">ULTRA RARE</span><div class="heart">♡</div></div>
-      <div class="info">
-        <div class="name">엄마 전용 사랑 보석함</div>
-        <div class="desc">열 때마다 아들의 “사랑해요”가 한 번씩 자동 재생되는 상상 속 보석함.</div>
-        <div class="price-row"><div class="price">₩0 <small>(마음은 무제한)</small></div><button class="add" data-item="엄마 전용 사랑 보석함">장바구니 담기 +</button></div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-art pink"><span class="tag">MAISON EXCLUSIVE</span><div class="voucher"><strong>잔소리 면제권</strong><small>JUST FOR TODAY</small></div></div>
-      <div class="info">
-        <div class="name">1일 잔소리 프리패스</div>
-        <div class="desc">엄마도 쉬어 가세요. 단, 아들이 사고 치면 자동 무효 처리됩니다.</div>
-        <div class="price-row"><div class="price">₩0 <small>(사용 조건 있음)</small></div><button class="add" data-item="1일 잔소리 프리패스">장바구니 담기 +</button></div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-art"><span class="tag">THE MOST PRECIOUS</span><div class="voucher"><strong>평생 효도 패키지</strong><small>PRICELESS</small></div></div>
-      <div class="info">
-        <div class="name">평생 효도 패키지</div>
-        <div class="desc">말뿐인 효도에서 실천하는 효도로. 유효기간: 평생.</div>
-        <div class="price-row"><div class="price">가격 측정 불가</div><button class="add" data-item="평생 효도 패키지">장바구니 담기 +</button></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="story" id="story">
-  <div class="eyebrow">OUR MOST IMPORTANT PROMISE</div>
-  <h2>“엄마는 이미<br><strong>세상에서 가장 귀한 사람</strong>이니까요.”</h2>
-  <p>메종 엄마는 세상 모든 엄마에게 존경과 사랑을 전합니다.<br>결제는 필요 없어요. 대신 오늘 엄마를 꼭 안아드리세요.</p>
-  <button class="primary" id="surpriseBtn">특별한 안내 확인하기 ✦</button>
-</section>
+  <section class="card notice">
+    <h2>🚨 긴급 공지 제001호</h2>
+    <p>
+      존경하는 선희님께 안내드립니다.<br><br>
+      최근 선희님의 가정 내 영향력이 지나치게 높아져
+      가족 구성원들의 자발적인 설거지 및 심부름 참여율이
+      비정상적으로 상승한 것으로 확인되었습니다.
+    </p>
+    <p>
+      이에 위원회는 선희님을
+      <strong>가정 내 최고 권력자</strong>로 공식 지정합니다.
+    </p>
+  </section>
+  <section class="card">
+    <h2>📋 선희님 특별 권한</h2>
+    <p>✅ 리모컨 최종 결정권</p>
+    <p>✅ 냉장고 음식 배분 결정권</p>
+    <p>✅ 가족에게 심부름을 지시할 수 있는 권한</p>
+    <p>✅ "내가 그럴 줄 알았다" 발언의 무제한 사용권</p>
+    <p>✅ 가족의 모든 잘못을 기억할 수 있는 특별 권한</p>
+  </section>
+  <section class="card">
+    <h2>🔍 선희님 성향 정밀 분석</h2>
+    <p>아래 버튼을 눌러 공식 분석 결과를 확인하세요.</p>
+    <button onclick="analyze()">분석 결과 확인</button>
+    <div id="analysis" class="result"></div>
+  </section>
+  <section class="card">
+    <h2>🏆 선희님 오늘의 칭호</h2>
+    <p>선희님께 가장 어울리는 칭호를 확인해 보세요.</p>
+    <button onclick="titleCheck()">칭호 발급받기</button>
+    <div id="title" class="result"></div>
+  </section>
+  <section class="card">
+    <h2>📩 선희님께 드리는 마지막 안내</h2>
+    <p>
+      본 위원회는 오랜 심의 끝에 다음과 같이 결론 내렸습니다.
+    </p>
+    <p>
+      <strong>
+        선희님은 이 집의 어머니이자,
+        실질적인 대표이사이며,
+        가족 행복 관리팀의 영구 CEO입니다.
+      </strong>
+    </p>
+    <button onclick="surprise()">최종 판정 확인하기</button>
+    <div id="final" class="result"></div>
+  </section>
 </main>
-
 <footer>
-  MAISON EOMMA © 2026 · 엄마를 향한 사랑으로 운영됩니다.<br>
-  본 사이트는 아들이 엄마를 웃게 하기 위해 만든 가상 쇼핑몰이며 실제 판매·결제는 진행되지 않습니다.
+  선희 특별관리위원회 · 본 홈페이지는 가족 사랑을 기반으로 제작되었습니다.<br>
+  ※ 공식 정부기관 및 실제 행정기관과는 무관한 장난용 홈페이지입니다.
 </footer>
-
-<div class="backdrop" id="backdrop" role="dialog" aria-modal="true">
-  <div class="modal">
-    <button class="close" id="closeBtn" aria-label="닫기">×</button>
-    <div class="heart-icon">♡</div>
-    <div class="eyebrow">A MESSAGE JUST FOR YOU</div>
-    <h3 id="modalTitle">엄마, 사실은요…</h3>
-    <p id="modalText">여기는 진짜 명품 쇼핑몰이 아니라 아들이 엄마를 웃게 하려고 만든 장난 홈페이지예요.<br><br><strong style="color:#b66b69">엄마는 돈으로 살 수 없는 세상 최고의 명품이에요. 사랑해요!</strong></p>
-    <button class="primary" id="doneBtn">감동받고 닫기 ♡</button>
-  </div>
-</div>
-<div class="toast" id="toast" role="status"></div>
-
 <script>
-const cart = [];
-const count = document.getElementById("cartCount");
-const backdrop = document.getElementById("backdrop");
-const toast = document.getElementById("toast");
-let toastTimer;
-
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
+function analyze() {
+  const box = document.getElementById("analysis");
+  box.style.display = "block";
+  box.innerHTML =
+    "📊 분석 완료!<br><br>" +
+    "가정 내 권력 지수: 99.9%<br>" +
+    "가족의 눈치 감지 능력: 최상급<br>" +
+    "한마디로 조용하게 만드는 능력: 측정 불가<br>" +
+    "가족들의 선희님 사랑 지수: 무한대 ❤️";
 }
-function openModal() { backdrop.classList.add("show"); }
-function closeModal() { backdrop.classList.remove("show"); }
-
-document.querySelectorAll(".add").forEach(button => {
-  button.addEventListener("click", () => {
-    cart.push(button.dataset.item);
-    count.textContent = cart.length;
-    showToast("✦ " + button.dataset.item + " — 장바구니에 담겼어요!");
-  });
-});
-
-document.getElementById("cartBtn").addEventListener("click", () => {
-  document.getElementById("modalTitle").textContent = cart.length ? "장바구니 확인" : "장바구니가 비어 있어요";
-  document.getElementById("modalText").innerHTML = cart.length
-    ? "담긴 상품: <strong style='color:#b66b69'>" + cart.join(", ") + "</strong><br><br>총 결제 금액: <strong>사랑으로 결제 완료 ₩0</strong><br><br>실제 결제는 없어요. 엄마에게 선물하고 싶은 마음만 담았습니다."
-    : "엄마를 위한 선물을 하나 골라 담아보세요.<br><br><strong style='color:#b66b69'>모든 상품은 사랑으로 결제됩니다. 총액 ₩0</strong>";
-  openModal();
-});
-
-document.getElementById("surpriseBtn").addEventListener("click", () => {
-  document.getElementById("modalTitle").textContent = "엄마, 사실은요…";
-  document.getElementById("modalText").innerHTML =
-    "여기는 진짜 명품 쇼핑몰이 아니라 아들이 엄마를 웃게 하려고 만든 장난 홈페이지예요.<br><br><strong style='color:#b66b69'>엄마는 돈으로 살 수 없는 세상 최고의 명품이에요. 사랑해요!</strong>";
-  openModal();
-});
-
-document.getElementById("closeBtn").addEventListener("click", closeModal);
-document.getElementById("doneBtn").addEventListener("click", closeModal);
-backdrop.addEventListener("click", event => {
-  if (event.target === backdrop) closeModal();
-});
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeModal();
-});
+function titleCheck() {
+  const box = document.getElementById("title");
+  box.style.display = "block";
+  box.innerHTML =
+    "🏅 공식 칭호 발급 완료!<br><br>" +
+    "「우리 집 절대 권력자 선희」<br>" +
+    "부가 칭호: 잔소리 명예의 전당 헌액자<br>" +
+    "임기: 평생<br>" +
+    "해임 가능 여부: 불가능";
+}
+function surprise() {
+  const box = document.getElementById("final");
+  box.style.display = "block";
+  box.innerHTML =
+    "🎉 최종 판정: 선희님은 무죄입니다!<br><br>" +
+    "잘못한 사람은 항상 따로 있지만<br>" +
+    "선희님 말씀은 일단 끝까지 듣는 것으로 결정되었습니다.<br><br>" +
+    "❤️ 사실 이 모든 결과의 진짜 이유는 하나입니다.<br>" +
+    "<strong>선희님이 우리 가족에게 가장 소중한 사람이기 때문입니다!</strong><br><br>" +
+    "제작 지원: 선희님을 사랑하는 가족";
+}
 </script>
 </body>
 </html>
