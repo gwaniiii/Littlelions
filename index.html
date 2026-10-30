@@ -1,135 +1,217 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f8fa">
-<title>입맛지도 | 내 주변 맛집</title>
+<meta name="theme-color" content="#fff8fa">
+<title>선희의 음식 추천 | 오늘은 뭐 먹을까?</title>
 
 <style>
 :root{
-  --bg:#f7f8fa;--paper:#fff;--ink:#20242b;--muted:#7b8492;
-  --line:#e7eaf0;--brand:#ff7043;--dark:#e95b30;
-  --pale:#fff0ea;--shadow:0 8px 28px #1f29370b
+  --bg:#fff8fa;--paper:#fff;--ink:#49353d;--muted:#927d85;
+  --line:#f2dfe6;--brand:#df7f9e;--dark:#b95378;
+  --pale:#fff0f5;--shadow:0 8px 28px #9b526b12
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}
+body{
+  margin:0;
+  background:radial-gradient(circle at 8% 8%,#ffeaf1 0,transparent 24%),
+  radial-gradient(circle at 95% 22%,#fff0df 0,transparent 22%),var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif
+}
 button,input,select{font:inherit}
 button{cursor:pointer}
 .app{max-width:1100px;margin:auto;padding:20px 22px 100px}
 header{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:950}
-.brand-icon{display:grid;place-items:center;width:38px;height:38px;
-border-radius:13px;background:var(--brand);color:white}
+.brand-icon{
+  display:grid;place-items:center;width:38px;height:38px;
+  border-radius:50%;background:var(--brand);color:white;
+  box-shadow:0 5px 14px #df7f9e44
+}
 .brand em{color:var(--brand);font-style:normal}
-.origin{padding:10px;border:1px solid var(--line);border-radius:12px;
-background:white;font-size:12px;font-weight:700}
-.hero{padding:30px 0 20px}
+.origin{
+  padding:10px;border:1px solid var(--line);border-radius:12px;
+  background:white;font-size:12px;font-weight:700
+}
+.hero{
+  padding:30px 22px 22px;margin:22px 0 18px;
+  border:1px solid #f3dce5;border-radius:24px;
+  background:linear-gradient(125deg,#fff0f5 0%,#fffaf4 58%,#fff 100%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.hero:after{
+  content:"🌼  ✿  🌷";position:absolute;right:18px;bottom:13px;
+  font-size:25px;opacity:.55;letter-spacing:5px;pointer-events:none
+}
 .kicker{font-size:11px;letter-spacing:1.5px;font-weight:900;color:var(--dark)}
 h1{font-size:clamp(30px,5vw,43px);line-height:1.2;letter-spacing:-1.5px;margin:9px 0}
-.hero p{font-size:14px;line-height:1.7;color:var(--muted)}
-.search{display:flex;align-items:center;gap:10px;padding:9px 10px 9px 15px;
-background:white;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.hero p{font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:5px}
+.hero .welcome{font-size:13px;font-weight:850;color:#bd6685;margin-bottom:9px}
+.search{
+  display:flex;align-items:center;gap:10px;padding:9px 10px 9px 15px;
+  background:white;border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow)
+}
 .search input{flex:1;min-width:0;border:0;outline:0;padding:10px 0}
-.primary{background:var(--brand)!important;color:white!important;border-color:var(--brand)!important}
-.btn{border:1px solid var(--line);background:white;color:#56606e;border-radius:10px;
-padding:10px 12px;font-size:12px;font-weight:800}
+.primary{
+  background:var(--brand)!important;color:white!important;
+  border-color:var(--brand)!important
+}
+.btn{
+  border:1px solid var(--line);background:white;color:#56606e;
+  border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800
+}
 .quick{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 24px}
 .tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:20px}
-.tab{border:0;border-bottom:3px solid transparent;background:transparent;
-padding:13px 18px;color:var(--muted);font-weight:850}
+.tab{
+  border:0;border-bottom:3px solid transparent;background:transparent;
+  padding:13px 18px;color:var(--muted);font-weight:850
+}
 .tab.active{color:var(--dark);border-bottom-color:var(--brand)}
-.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px;align-items:start}
-.filters{background:white;border:1px solid var(--line);border-radius:18px;
-padding:18px;box-shadow:var(--shadow)}
-.filter-head{display:flex;justify-content:space-between;font-weight:900;margin-bottom:15px}
+.layout{
+  display:grid;grid-template-columns:245px minmax(0,1fr);
+  gap:22px;align-items:start
+}
+.filters{
+  background:white;border:1px solid var(--line);border-radius:18px;
+  padding:18px;box-shadow:var(--shadow)
+}
+.filter-head{
+  display:flex;justify-content:space-between;
+  font-weight:900;margin-bottom:15px
+}
 .reset{border:0;background:transparent;color:var(--dark);font-size:12px;font-weight:800}
 .group{padding:15px 0;border-top:1px solid #f0f2f5}
 .group:first-of-type{border-top:0;padding-top:0}
 .label{font-size:12px;font-weight:900;margin-bottom:10px}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.chip{border:1px solid var(--line);background:white;color:#56606e;
-border-radius:999px;padding:8px 10px;font-size:12px;font-weight:750}
-.chip.active,.walk.active{background:var(--pale);border-color:#ffc7b5;color:#c84c26}
+.chip{
+  border:1px solid var(--line);background:white;color:#56606e;
+  border-radius:999px;padding:8px 10px;font-size:12px;font-weight:750
+}
+.chip.active,.walk.active{
+  background:var(--pale);border-color:#ffc7b5;color:#b95378
+}
 .walks{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.walk{padding:10px 2px;border:1px solid var(--line);border-radius:9px;
-background:white;font-size:11px;font-weight:800}
+.walk{
+  padding:10px 2px;border:1px solid var(--line);border-radius:9px;
+  background:white;font-size:11px;font-weight:800
+}
 .note{font-size:11px;color:var(--muted);line-height:1.7;margin:10px 0 0}
-.heading{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:14px}
+.heading{
+  display:flex;align-items:end;justify-content:space-between;
+  gap:10px;margin-bottom:14px
+}
 .heading h2{font-size:20px;margin:0 0 5px}
 .sub{font-size:12px;color:var(--muted)}
-.notice{border:1px solid #f3e0d7;background:#fff8f4;color:#795949;
-padding:12px;border-radius:13px;font-size:12px;line-height:1.7;margin-bottom:14px}
-#map{height:270px;border:1px solid var(--line);border-radius:15px;
-margin-bottom:15px;background:#f0f2f5}
+.notice{
+  border:1px solid #f3e0d7;background:#fff8f4;color:#795949;
+  padding:12px;border-radius:13px;font-size:12px;line-height:1.7;margin-bottom:14px
+}
+#map{
+  height:270px;border:1px solid var(--line);border-radius:15px;
+  margin-bottom:15px;background:#f0f2f5
+}
 .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .cardtop{display:flex;justify-content:space-between;align-items:center;padding:13px 13px 0}
-.emoji{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;
-background:var(--pale);font-size:22px}
-.heart{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
-background:white;color:#8a929e;font-size:18px}
+.emoji{
+  display:grid;place-items:center;width:42px;height:42px;
+  border-radius:12px;background:var(--pale);font-size:22px
+}
+.heart{
+  width:34px;height:34px;border:1px solid var(--line);
+  border-radius:50%;background:white;color:#8a929e;font-size:18px
+}
 .heart.saved{color:#ed5570;background:#fff1f3}
 .cardbody{padding:12px 13px 14px}
 .name{font-size:15px;font-weight:900;line-height:1.5;margin:0 0 7px}
-.address{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 9px;overflow-wrap:anywhere}
+.address{
+  font-size:11px;line-height:1.6;color:var(--muted);
+  margin:0 0 9px;overflow-wrap:anywhere
+}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
 .tag{font-size:10px;background:#f3f5f8;color:#657080;padding:5px 7px;border-radius:6px}
 .cardfoot{border-top:1px solid #f0f2f5;padding-top:10px}
 .distance{font-size:11px;color:#56606e;font-weight:800;line-height:1.6;margin-bottom:9px}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
-.link{display:inline-block;text-decoration:none;border:1px solid var(--line);
-border-radius:8px;padding:8px;font-size:11px;font-weight:800;color:#4d5664}
-.empty{grid-column:1/-1;text-align:center;padding:35px 16px;background:white;
-border:1px dashed #dce1e8;border-radius:15px;color:var(--muted);line-height:1.8}
+.link{
+  display:inline-block;text-decoration:none;border:1px solid var(--line);
+  border-radius:8px;padding:8px;font-size:11px;font-weight:800;color:#4d5664
+}
+.empty{
+  grid-column:1/-1;text-align:center;padding:35px 16px;background:white;
+  border:1px dashed #dce1e8;border-radius:15px;color:var(--muted);line-height:1.8
+}
 .empty strong{display:block;color:var(--ink);margin-bottom:5px}
-.bottom{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);
-width:min(100%,1100px);display:grid;grid-template-columns:repeat(3,1fr);
-padding:8px 12px calc(8px + env(safe-area-inset-bottom));
-background:#ffffffed;border:1px solid var(--line);border-bottom:0;border-radius:18px 18px 0 0}
-.nav{border:0;background:transparent;color:#8a929e;padding:5px;font-size:11px;font-weight:750}
+.bottom{
+  position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);
+  width:min(100%,1100px);display:grid;grid-template-columns:repeat(3,1fr);
+  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+  background:#ffffffed;border:1px solid var(--line);
+  border-bottom:0;border-radius:18px 18px 0 0
+}
+.nav{
+  border:0;background:transparent;color:#8a929e;
+  padding:5px;font-size:11px;font-weight:750
+}
 .nav span{display:block;font-size:20px;margin-bottom:3px}
 .nav.active{color:var(--dark)}
 .hidden{display:none!important}
-@media(min-width:760px){.results{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:680px){
- .app{padding:14px 14px 95px}.layout{grid-template-columns:1fr;gap:14px}
- .filters{padding:15px}.results{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .cardbody{padding:10px}.cardtop{padding:10px 10px 0}
- .name{font-size:14px}.origin{font-size:10px;padding:8px}
- .heading h2{font-size:18px}
+@media(min-width:760px){
+  .results{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media(max-width:390px){.results{grid-template-columns:1fr}}
+@media(max-width:680px){
+  .app{padding:14px 14px 95px}
+  .hero{padding:24px 18px 25px;margin:18px 0 16px}
+  .layout{grid-template-columns:1fr;gap:14px}
+  .filters{padding:15px}
+  .results{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .cardbody{padding:10px}
+  .cardtop{padding:10px 10px 0}
+  .name{font-size:14px}
+  .origin{font-size:10px;padding:8px}
+  .heading h2{font-size:18px}
+}
+@media(max-width:390px){
+  .results{grid-template-columns:1fr}
+}
 </style>
 
-<!-- 아래 JavaScript 키 설정을 꼭 확인하세요 -->
 <script>
-window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
+window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
 </script>
+
 <script>
 (function(){
   const key = window.KAKAO_JS_KEY;
   if(!key || key.includes("여기에_")){
-    window.kakaoSdkError = "7c92e831a92677952237c18b2408ecfe";
+    window.kakaoSdkError = "카카오 JavaScript 키를 새 키로 입력해 주세요.";
     return;
   }
+
   const s = document.createElement("script");
   s.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey="
     + encodeURIComponent(key) + "&libraries=services&autoload=false";
+
   s.onload = function(){
     if(window.kakao && kakao.maps){
-      kakao.maps.load(function(){ window.dispatchEvent(new Event("kakao-ready")); });
+      kakao.maps.load(function(){
+        window.dispatchEvent(new Event("kakao-ready"));
+      });
     }else{
       window.kakaoSdkError = "카카오 지도 SDK를 초기화하지 못했어요.";
       window.dispatchEvent(new Event("kakao-failed"));
     }
   };
+
   s.onerror = function(){
     window.kakaoSdkError = "카카오 SDK를 불러오지 못했어요. JavaScript 키와 등록 도메인을 확인해 주세요.";
     window.dispatchEvent(new Event("kakao-failed"));
   };
+
   document.head.appendChild(s);
 })();
 </script>
@@ -137,15 +219,20 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
 
 <body>
 <div class="app">
+
   <header>
-    <div class="brand"><span class="brand-icon">⌁</span><span>입맛<em>지도</em></span></div>
+    <div class="brand">
+      <span class="brand-icon">🌸</span>
+      <span>선희의 <em>음식 추천</em></span>
+    </div>
     <div class="origin">📍 동아백화점 쇼핑점 기준</div>
   </header>
 
   <section class="hero">
-    <div class="kicker">FIND YOUR NEXT FAVORITE</div>
-    <h1>오늘 어디서<br>뭐 먹지?</h1>
-    <p>주변 음식점과 카페를 찾아보고,<br>마음에 드는 곳은 찜해 둬.</p>
+    <div class="welcome">🌷 선희님을 위한 작은 맛집 지도</div>
+    <div class="kicker">A LITTLE PLACE JUST FOR SUNHEE</div>
+    <h1>선희님,<br>오늘은 뭐가 당기세요?</h1>
+    <p>오늘의 기분에 맞는 맛있는 한 끼와<br>기분 좋은 카페를 찾아드릴게요.</p>
   </section>
 
   <form class="search" id="searchForm">
@@ -169,11 +256,16 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   </nav>
 
   <div class="layout">
+
     <aside class="filters">
-      <div class="filter-head"><span>필터</span><button class="reset" id="reset">초기화</button></div>
+      <div class="filter-head">
+        <span>🌼 선희의 취향 찾기</span>
+        <button class="reset" id="reset">초기화</button>
+      </div>
 
       <section class="group">
-        <div class="label">어떤 느낌이 당겨?</div>
+        <div class="label">오늘은 어떤 맛이 좋으세요?</div>
+
         <div class="chips" id="foodFilters">
           <button class="chip active" type="button" data-term="">전체</button>
           <button class="chip" type="button" data-term="매운 음식">🌶️ 매운맛</button>
@@ -183,6 +275,7 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
           <button class="chip" type="button" data-term="덮밥">🍯 단짠단짠</button>
           <button class="chip" type="button" data-term="파스타">🍋 파스타</button>
         </div>
+
         <div class="chips hidden" id="cafeFilters">
           <button class="chip active" type="button" data-term="">전체</button>
           <button class="chip" type="button" data-term="디저트 카페">🍰 디저트</button>
@@ -193,17 +286,20 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
       </section>
 
       <section class="group">
-        <div class="label">주변 검색 범위</div>
+        <div class="label">얼마나 걸어볼까요?</div>
         <div class="walks">
           <button class="walk active" type="button" data-radius="700">10분 이내</button>
           <button class="walk" type="button" data-radius="1400">20분 이내</button>
           <button class="walk" type="button" data-radius="2100">30분 이내</button>
         </div>
-        <p class="note">출발점: 동아백화점 쇼핑점<br>직선거리 기준으로 도보 시간을 추정해. 실제 경로와 다를 수 있어.</p>
+        <p class="note">
+          출발점: 동아백화점 쇼핑점<br>
+          직선거리 기준으로 도보 시간을 추정해. 실제 경로와 다를 수 있어.
+        </p>
       </section>
 
       <section class="group">
-        <div class="label">정렬</div>
+        <div class="label">맛집 정렬</div>
         <select id="sort" class="btn" style="width:100%">
           <option value="distance">가까운 순</option>
           <option value="name">가게명순</option>
@@ -218,17 +314,33 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
           <div class="sub" id="summary">실제 장소 검색 준비 중</div>
         </div>
       </div>
-      <div class="notice" id="status" role="status">카카오 장소 검색을 준비하고 있어.</div>
+
+      <div class="notice" id="status" role="status">
+        카카오 장소 검색을 준비하고 있어.
+      </div>
+
       <div id="map"></div>
       <section class="results" id="results" aria-live="polite"></section>
     </main>
+
   </div>
+
+  <p style="text-align:center;color:#b28b99;font-size:11px;margin:24px 0 8px;">
+    🌸 선희님만을 위해 준비한 맛있는 하루 ♡
+  </p>
+
 </div>
 
 <nav class="bottom">
-  <button class="nav active" type="button" data-page="home"><span>⌂</span>탐색</button>
-  <button class="nav" type="button" data-page="saved"><span>♡</span>찜 목록</button>
-  <button class="nav" type="button" data-page="random"><span>⤨</span>랜덤 추천</button>
+  <button class="nav active" type="button" data-page="home">
+    <span>⌂</span>맛집 찾기
+  </button>
+  <button class="nav" type="button" data-page="saved">
+    <span>♡</span>선희의 찜
+  </button>
+  <button class="nav" type="button" data-page="random">
+    <span>🎁</span>오늘의 추천
+  </button>
 </nav>
 
 <script>
@@ -237,12 +349,14 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   const $$ = s => [...document.querySelectorAll(s)];
 
   const ORIGIN_ADDRESS = "대구광역시 중구 달구벌대로 2085";
+
   let kind = "food";
   let term = "";
   let query = "";
   let radius = 700;
   let sort = "distance";
   let page = "home";
+
   let map = null, places = null, geocoder = null, origin = null;
   let currentPlaces = [];
   let cache = {};
@@ -251,29 +365,44 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   try {
     saved = JSON.parse(localStorage.getItem("ipmat-saved-v3") || "[]");
     if (!Array.isArray(saved)) saved = [];
-  } catch (e) { saved = []; }
+  } catch (e) {
+    saved = [];
+  }
 
   const status = message => $("#status").textContent = message;
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
     }[c]));
   }
 
   function distanceMeters(p) {
-    if (p.distance !== undefined && p.distance !== "") return Number(p.distance);
+    if (p.distance !== undefined && p.distance !== "") {
+      return Number(p.distance);
+    }
+
     if (!origin) return Infinity;
+
     const rad = d => d * Math.PI / 180;
-    const lat1 = rad(origin.getLat()), lat2 = rad(Number(p.y));
-    const dlat = lat2-lat1, dlng = rad(Number(p.x)-origin.getLng());
+    const lat1 = rad(origin.getLat());
+    const lat2 = rad(Number(p.y));
+    const dlat = lat2 - lat1;
+    const dlng = rad(Number(p.x) - origin.getLng());
+
     const a = Math.sin(dlat/2)**2 +
       Math.cos(lat1)*Math.cos(lat2)*Math.sin(dlng/2)**2;
+
     return 6371000 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   }
 
   function search() {
     if (!places || !origin) return;
+
     const word = query.trim() || term.trim();
 
     $("#results").innerHTML =
@@ -286,6 +415,7 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
         status("검색 결과가 없어. 다른 검색어를 입력해 봐.");
         return;
       }
+
       if (resultStatus !== kakao.maps.services.Status.OK) {
         currentPlaces = [];
         render();
@@ -300,6 +430,7 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
           meters: distanceMeters(p),
           kind
         };
+
         cache[item.id] = item;
         return item;
       });
@@ -325,21 +456,29 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   function render() {
     $("#foodFilters").classList.toggle("hidden", kind !== "food");
     $("#cafeFilters").classList.toggle("hidden", kind !== "cafe");
-    $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.kind === kind));
 
-    $("#title").textContent = page === "saved" ? "내가 찜한 장소" :
-      page === "random" ? "랜덤 추천" :
+    $$(".tab").forEach(b =>
+      b.classList.toggle("active", b.dataset.kind === kind)
+    );
+
+    $("#title").textContent =
+      page === "saved" ? "선희가 찜한 장소" :
+      page === "random" ? "오늘의 랜덤 추천" :
       kind === "food" ? "주변 음식점" : "주변 카페";
 
     let list;
+
     if (page === "saved") {
       list = saved.map(id => cache[id]).filter(Boolean);
     } else {
       list = currentPlaces.filter(p => p.meters <= radius);
     }
 
-    if (sort === "name") list.sort((a,b) => a.place_name.localeCompare(b.place_name,"ko"));
-    else list.sort((a,b) => a.meters - b.meters);
+    if (sort === "name") {
+      list.sort((a,b) => a.place_name.localeCompare(b.place_name,"ko"));
+    } else {
+      list.sort((a,b) => a.meters - b.meters);
+    }
 
     if (page === "random" && list.length) {
       list = [list[Math.floor(Math.random() * list.length)]];
@@ -348,7 +487,8 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
     $("#summary").textContent = `${list.length}개 장소 · 반경 약 ${radius}m`;
 
     if (!list.length) {
-      $("#results").innerHTML = '<div class="empty"><strong>장소가 아직 없어.</strong>검색어를 바꾸거나 검색 범위를 넓혀 봐.</div>';
+      $("#results").innerHTML =
+        '<div class="empty"><strong>장소가 아직 없어.</strong>검색어를 바꾸거나 검색 범위를 넓혀 봐.</div>';
       return;
     }
 
@@ -358,11 +498,14 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
       const address = escapeHtml(p.road_address_name || p.address_name || "주소 정보 없음");
       const category = escapeHtml((p.category_name || "").split(" > ").pop());
       const phone = p.phone ? escapeHtml(p.phone) : "전화번호 정보 없음";
+
       const distance = Math.round(p.meters);
       const minutes = Math.max(1, Math.round(distance / 67));
       const isSaved = saved.includes(p.id);
+
       const mapUrl = p.place_url ||
         "https://map.kakao.com/link/search/" + encodeURIComponent(p.place_name);
+
       const naverUrl =
         "https://map.naver.com/p/search/" +
         encodeURIComponent(p.place_name + " " + (p.road_address_name || p.address_name || ""));
@@ -370,20 +513,30 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
       return `<article class="card">
         <div class="cardtop">
           <div class="emoji">${kind === "cafe" ? "☕" : "🍽️"}</div>
-          <button type="button" class="heart ${isSaved ? "saved" : ""}" data-save="${id}">${isSaved ? "♥" : "♡"}</button>
+          <button type="button" class="heart ${isSaved ? "saved" : ""}" data-save="${id}">
+            ${isSaved ? "♥" : "♡"}
+          </button>
         </div>
+
         <div class="cardbody">
           <h3 class="name">${name}</h3>
           <p class="address">${address}</p>
+
           <div class="tags">
             <span class="tag">${category}</span>
             <span class="tag">${phone}</span>
           </div>
+
           <div class="cardfoot">
             <div class="distance">📍 약 ${distance}m · 🚶 약 ${minutes}분(추정)</div>
+
             <div class="actions">
-              <a class="link" href="${escapeHtml(mapUrl)}" target="_blank" rel="noopener">카카오 장소 정보 ↗</a>
-              <a class="link primary" href="${escapeHtml(naverUrl)}" target="_blank" rel="noopener">지도·길찾기 ↗</a>
+              <a class="link" href="${escapeHtml(mapUrl)}" target="_blank" rel="noopener">
+                카카오 장소 정보 ↗
+              </a>
+              <a class="link primary" href="${escapeHtml(naverUrl)}" target="_blank" rel="noopener">
+                지도·길찾기 ↗
+              </a>
             </div>
           </div>
         </div>
@@ -394,7 +547,8 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   function init() {
     if (window.kakaoSdkError) {
       status(window.kakaoSdkError);
-      $("#results").innerHTML = '<div class="empty"><strong>지도 연결이 필요해.</strong>JavaScript 키 입력을 확인해 줘.</div>';
+      $("#results").innerHTML =
+        '<div class="empty"><strong>지도 연결이 필요해.</strong>JavaScript 키 입력을 확인해 줘.</div>';
       return;
     }
 
@@ -407,6 +561,7 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
       center: new kakao.maps.LatLng(35.8714, 128.6014),
       level: 5
     });
+
     places = new kakao.maps.services.Places();
     geocoder = new kakao.maps.services.Geocoder();
 
@@ -418,22 +573,34 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
 
       origin = new kakao.maps.LatLng(Number(data[0].y), Number(data[0].x));
       map.setCenter(origin);
-      new kakao.maps.Marker({map, position:origin, title:"동아백화점 쇼핑점"});
+
+      new kakao.maps.Marker({
+        map,
+        position:origin,
+        title:"동아백화점 쇼핑점"
+      });
+
       search();
     });
   }
 
   window.addEventListener("kakao-ready", init);
+
   window.addEventListener("kakao-failed", () => {
     status(window.kakaoSdkError || "카카오 지도 SDK 연결에 실패했어.");
   });
 
   $("#searchForm").addEventListener("submit", e => {
     e.preventDefault();
+
     query = $("#searchInput").value.trim();
     term = "";
     page = "home";
-    $$(".nav").forEach(b => b.classList.toggle("active", b.dataset.page === page));
+
+    $$(".nav").forEach(b =>
+      b.classList.toggle("active", b.dataset.page === page)
+    );
+
     search();
   });
 
@@ -441,6 +608,7 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
     query = e.target.value.trim();
     term = "";
     page = "home";
+
     if (!query || query.length >= 2) search();
   });
 
@@ -458,9 +626,19 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
     query = "";
     $("#searchInput").value = "";
     page = "home";
-    $$(".tab").forEach(t => t.classList.toggle("active", t === b));
-    $$(".nav").forEach(n => n.classList.toggle("active", n.dataset.page === "home"));
-    $$(".chip").forEach(c => c.classList.toggle("active", c.dataset.term === ""));
+
+    $$(".tab").forEach(t =>
+      t.classList.toggle("active", t === b)
+    );
+
+    $$(".nav").forEach(n =>
+      n.classList.toggle("active", n.dataset.page === "home")
+    );
+
+    $$(".chip").forEach(c =>
+      c.classList.toggle("active", c.dataset.term === "")
+    );
+
     search();
   }));
 
@@ -468,15 +646,24 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
     term = b.dataset.term;
     query = "";
     $("#searchInput").value = "";
+
     const parent = b.closest(".chips");
-    parent.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === b));
+
+    parent.querySelectorAll(".chip").forEach(c =>
+      c.classList.toggle("active", c === b)
+    );
+
     page = "home";
     search();
   }));
 
   $$("[data-radius]").forEach(b => b.addEventListener("click", () => {
     radius = Number(b.dataset.radius);
-    $$(".walk").forEach(w => w.classList.toggle("active", w === b));
+
+    $$(".walk").forEach(w =>
+      w.classList.toggle("active", w === b)
+    );
+
     render();
   }));
 
@@ -486,34 +673,68 @@ window.KAKAO_JS_KEY = "7c92e831a92677952237c18b2408ecfe";
   });
 
   $("#reset").addEventListener("click", () => {
-    kind = "food"; term = ""; query = ""; radius = 700;
-    sort = "distance"; page = "home";
+    kind = "food";
+    term = "";
+    query = "";
+    radius = 700;
+    sort = "distance";
+    page = "home";
+
     $("#searchInput").value = "";
     $("#sort").value = "distance";
-    $$(".walk").forEach(w => w.classList.toggle("active", w.dataset.radius === "700"));
-    $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.kind === "food"));
-    $$(".chip").forEach(b => b.classList.toggle("active", b.dataset.term === ""));
-    $$(".nav").forEach(b => b.classList.toggle("active", b.dataset.page === "home"));
+
+    $$(".walk").forEach(w =>
+      w.classList.toggle("active", w.dataset.radius === "700")
+    );
+
+    $$(".tab").forEach(b =>
+      b.classList.toggle("active", b.dataset.kind === "food")
+    );
+
+    $$(".chip").forEach(b =>
+      b.classList.toggle("active", b.dataset.term === "")
+    );
+
+    $$(".nav").forEach(b =>
+      b.classList.toggle("active", b.dataset.page === "home")
+    );
+
     search();
   });
 
   $$(".nav").forEach(b => b.addEventListener("click", () => {
     page = b.dataset.page;
-    $$(".nav").forEach(n => n.classList.toggle("active", n === b));
+
+    $$(".nav").forEach(n =>
+      n.classList.toggle("active", n === b)
+    );
+
     if (page === "random" && !currentPlaces.some(p => p.meters <= radius)) {
       alert("먼저 주변 장소를 검색해 줘.");
       page = "home";
-      $$(".nav").forEach(n => n.classList.toggle("active", n.dataset.page === "home"));
+
+      $$(".nav").forEach(n =>
+        n.classList.toggle("active", n.dataset.page === "home")
+      );
     }
+
     render();
   }));
 
   $("#results").addEventListener("click", e => {
     const button = e.target.closest("[data-save]");
     if (!button) return;
+
     const id = button.dataset.save;
-    saved = saved.includes(id) ? saved.filter(x => x !== id) : [...saved, id];
-    try { localStorage.setItem("ipmat-saved-v3", JSON.stringify(saved)); } catch (e) {}
+
+    saved = saved.includes(id)
+      ? saved.filter(x => x !== id)
+      : [...saved, id];
+
+    try {
+      localStorage.setItem("ipmat-saved-v3", JSON.stringify(saved));
+    } catch (e) {}
+
     render();
   });
 
