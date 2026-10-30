@@ -13,171 +13,106 @@
   --pale:#fff0f5;--shadow:0 8px 28px #9b526b12
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:radial-gradient(circle at 8% 8%,#ffeaf1 0,transparent 24%),
-  radial-gradient(circle at 95% 22%,#fff0df 0,transparent 22%),var(--bg);
-  color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif
-}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}
 button,input,select{font:inherit}
 button{cursor:pointer}
 .app{max-width:1100px;margin:auto;padding:20px 22px 100px}
 header{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:950}
-.brand-icon{
-  display:grid;place-items:center;width:38px;height:38px;
-  border-radius:50%;background:var(--brand);color:white;
-  box-shadow:0 5px 14px #df7f9e44
-}
+.brand-icon{display:grid;place-items:center;width:38px;height:38px;
+border-radius:50%;background:var(--brand);color:white}
 .brand em{color:var(--brand);font-style:normal}
-.origin{
-  padding:10px;border:1px solid var(--line);border-radius:12px;
-  background:white;font-size:12px;font-weight:700
-}
-.hero{
-  padding:30px 22px 22px;margin:22px 0 18px;
-  border:1px solid #f3dce5;border-radius:24px;
-  background:linear-gradient(125deg,#fff0f5 0%,#fffaf4 58%,#fff 100%);
-  box-shadow:var(--shadow);position:relative;overflow:hidden
-}
-.hero:after{
-  content:"🌼  ✿  🌷";position:absolute;right:18px;bottom:13px;
-  font-size:25px;opacity:.55;letter-spacing:5px;pointer-events:none
-}
+.origin{padding:10px;border:1px solid var(--line);border-radius:12px;
+background:white;font-size:12px;font-weight:700}
+.hero{padding:30px 22px 22px;margin:22px 0 18px;border:1px solid #f3dce5;
+border-radius:24px;background:linear-gradient(125deg,#fff0f5 0%,#fffaf4 58%,#fff 100%);
+box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"🌼  ✿  🌷";position:absolute;right:18px;bottom:13px;
+font-size:25px;opacity:.55;letter-spacing:5px;pointer-events:none}
 .kicker{font-size:11px;letter-spacing:1.5px;font-weight:900;color:var(--dark)}
 h1{font-size:clamp(30px,5vw,43px);line-height:1.2;letter-spacing:-1.5px;margin:9px 0}
 .hero p{font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:5px}
 .hero .welcome{font-size:13px;font-weight:850;color:#bd6685;margin-bottom:9px}
-.search{
-  display:flex;align-items:center;gap:10px;padding:9px 10px 9px 15px;
-  background:white;border:1px solid var(--line);border-radius:16px;
-  box-shadow:var(--shadow)
-}
+.search{display:flex;align-items:center;gap:10px;padding:9px 10px 9px 15px;
+background:white;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
 .search input{flex:1;min-width:0;border:0;outline:0;padding:10px 0}
-.primary{
-  background:var(--brand)!important;color:white!important;
-  border-color:var(--brand)!important
-}
-.btn{
-  border:1px solid var(--line);background:white;color:#56606e;
-  border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800
-}
+.primary{background:var(--brand)!important;color:white!important;border-color:var(--brand)!important}
+.btn{border:1px solid var(--line);background:white;color:#56606e;
+border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800}
 .quick{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 24px}
 .tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:20px}
-.tab{
-  border:0;border-bottom:3px solid transparent;background:transparent;
-  padding:13px 18px;color:var(--muted);font-weight:850
-}
+.tab{border:0;border-bottom:3px solid transparent;background:transparent;
+padding:13px 18px;color:var(--muted);font-weight:850}
 .tab.active{color:var(--dark);border-bottom-color:var(--brand)}
-.layout{
-  display:grid;grid-template-columns:245px minmax(0,1fr);
-  gap:22px;align-items:start
-}
-.filters{
-  background:white;border:1px solid var(--line);border-radius:18px;
-  padding:18px;box-shadow:var(--shadow)
-}
-.filter-head{
-  display:flex;justify-content:space-between;
-  font-weight:900;margin-bottom:15px
-}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px;align-items:start}
+.filters{background:white;border:1px solid var(--line);border-radius:18px;
+padding:18px;box-shadow:var(--shadow)}
+.filter-head{display:flex;justify-content:space-between;font-weight:900;margin-bottom:15px}
 .reset{border:0;background:transparent;color:var(--dark);font-size:12px;font-weight:800}
 .group{padding:15px 0;border-top:1px solid #f0f2f5}
 .group:first-of-type{border-top:0;padding-top:0}
 .label{font-size:12px;font-weight:900;margin-bottom:10px}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.chip{
-  border:1px solid var(--line);background:white;color:#56606e;
-  border-radius:999px;padding:8px 10px;font-size:12px;font-weight:750
-}
-.chip.active,.walk.active{
-  background:var(--pale);border-color:#ffc7b5;color:#b95378
-}
+.surprise{width:100%;margin-top:14px;background:linear-gradient(100deg,#fff0f5,#fff8ed);
+border-color:#f0d2df;color:#a94e70;font-weight:900}
+.chip{border:1px solid var(--line);background:white;color:#56606e;
+border-radius:999px;padding:8px 10px;font-size:12px;font-weight:750}
+.chip.active,.walk.active{background:var(--pale);border-color:#ffc7b5;color:#c84c26}
 .walks{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.walk{
-  padding:10px 2px;border:1px solid var(--line);border-radius:9px;
-  background:white;font-size:11px;font-weight:800
-}
+.walk{padding:10px 2px;border:1px solid var(--line);border-radius:9px;
+background:white;font-size:11px;font-weight:800}
 .note{font-size:11px;color:var(--muted);line-height:1.7;margin:10px 0 0}
-.heading{
-  display:flex;align-items:end;justify-content:space-between;
-  gap:10px;margin-bottom:14px
-}
+.heading{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:14px}
 .heading h2{font-size:20px;margin:0 0 5px}
 .sub{font-size:12px;color:var(--muted)}
-.notice{
-  border:1px solid #f3e0d7;background:#fff8f4;color:#795949;
-  padding:12px;border-radius:13px;font-size:12px;line-height:1.7;margin-bottom:14px
-}
-#map{
-  height:270px;border:1px solid var(--line);border-radius:15px;
-  margin-bottom:15px;background:#f0f2f5
-}
+.notice{border:1px solid #f3e0d7;background:#fff8f4;color:#795949;
+padding:12px;border-radius:13px;font-size:12px;line-height:1.7;margin-bottom:14px}
+#map{height:270px;border:1px solid var(--line);border-radius:15px;
+margin-bottom:15px;background:#f0f2f5}
 .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .cardtop{display:flex;justify-content:space-between;align-items:center;padding:13px 13px 0}
-.emoji{
-  display:grid;place-items:center;width:42px;height:42px;
-  border-radius:12px;background:var(--pale);font-size:22px
-}
-.heart{
-  width:34px;height:34px;border:1px solid var(--line);
-  border-radius:50%;background:white;color:#8a929e;font-size:18px
-}
+.emoji{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;
+background:var(--pale);font-size:22px}
+.heart{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
+background:white;color:#8a929e;font-size:18px}
 .heart.saved{color:#ed5570;background:#fff1f3}
 .cardbody{padding:12px 13px 14px}
 .name{font-size:15px;font-weight:900;line-height:1.5;margin:0 0 7px}
-.address{
-  font-size:11px;line-height:1.6;color:var(--muted);
-  margin:0 0 9px;overflow-wrap:anywhere
-}
+.address{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 9px;overflow-wrap:anywhere}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
 .tag{font-size:10px;background:#f3f5f8;color:#657080;padding:5px 7px;border-radius:6px}
 .cardfoot{border-top:1px solid #f0f2f5;padding-top:10px}
 .distance{font-size:11px;color:#56606e;font-weight:800;line-height:1.6;margin-bottom:9px}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
-.link{
-  display:inline-block;text-decoration:none;border:1px solid var(--line);
-  border-radius:8px;padding:8px;font-size:11px;font-weight:800;color:#4d5664
-}
-.empty{
-  grid-column:1/-1;text-align:center;padding:35px 16px;background:white;
-  border:1px dashed #dce1e8;border-radius:15px;color:var(--muted);line-height:1.8
-}
+.link{display:inline-block;text-decoration:none;border:1px solid var(--line);
+border-radius:8px;padding:8px;font-size:11px;font-weight:800;color:#4d5664}
+.empty{grid-column:1/-1;text-align:center;padding:35px 16px;background:white;
+border:1px dashed #dce1e8;border-radius:15px;color:var(--muted);line-height:1.8}
 .empty strong{display:block;color:var(--ink);margin-bottom:5px}
-.bottom{
-  position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);
-  width:min(100%,1100px);display:grid;grid-template-columns:repeat(3,1fr);
-  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
-  background:#ffffffed;border:1px solid var(--line);
-  border-bottom:0;border-radius:18px 18px 0 0
-}
-.nav{
-  border:0;background:transparent;color:#8a929e;
-  padding:5px;font-size:11px;font-weight:750
-}
+.bottom{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);
+width:min(100%,1100px);display:grid;grid-template-columns:repeat(3,1fr);
+padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+background:#ffffffed;border:1px solid var(--line);border-bottom:0;border-radius:18px 18px 0 0}
+.nav{border:0;background:transparent;color:#8a929e;padding:5px;font-size:11px;font-weight:750}
 .nav span{display:block;font-size:20px;margin-bottom:3px}
 .nav.active{color:var(--dark)}
 .hidden{display:none!important}
-@media(min-width:760px){
-  .results{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
+@media(min-width:760px){.results{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){
-  .app{padding:14px 14px 95px}
-  .hero{padding:24px 18px 25px;margin:18px 0 16px}
-  .layout{grid-template-columns:1fr;gap:14px}
-  .filters{padding:15px}
-  .results{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-  .cardbody{padding:10px}
-  .cardtop{padding:10px 10px 0}
-  .name{font-size:14px}
-  .origin{font-size:10px;padding:8px}
-  .heading h2{font-size:18px}
+ .app{padding:14px 14px 95px}
+ .hero{padding:24px 18px 25px;margin:18px 0 16px}
+ .layout{grid-template-columns:1fr;gap:14px}
+ .filters{padding:15px}
+ .results{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .cardbody{padding:10px}
+ .cardtop{padding:10px 10px 0}
+ .name{font-size:14px}
+ .origin{font-size:10px;padding:8px}
+ .heading h2{font-size:18px}
 }
-@media(max-width:390px){
-  .results{grid-template-columns:1fr}
-}
+@media(max-width:390px){.results{grid-template-columns:1fr}}
 </style>
 
 <script>
@@ -191,11 +126,9 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
     window.kakaoSdkError = "카카오 JavaScript 키를 새 키로 입력해 주세요.";
     return;
   }
-
   const s = document.createElement("script");
   s.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey="
     + encodeURIComponent(key) + "&libraries=services&autoload=false";
-
   s.onload = function(){
     if(window.kakao && kakao.maps){
       kakao.maps.load(function(){
@@ -206,12 +139,10 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
       window.dispatchEvent(new Event("kakao-failed"));
     }
   };
-
   s.onerror = function(){
     window.kakaoSdkError = "카카오 SDK를 불러오지 못했어요. JavaScript 키와 등록 도메인을 확인해 주세요.";
     window.dispatchEvent(new Event("kakao-failed"));
   };
-
   document.head.appendChild(s);
 })();
 </script>
@@ -220,115 +151,124 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
 <body>
 <div class="app">
 
-  <header>
-    <div class="brand">
-      <span class="brand-icon">🌸</span>
-      <span>선희의 <em>음식 추천</em></span>
+<header>
+  <div class="brand">
+    <span class="brand-icon">🌸</span>
+    <span>선희의 <em>음식 추천</em></span>
+  </div>
+  <div class="origin">📍 동아백화점 쇼핑점 기준</div>
+</header>
+
+<section class="hero">
+  <div class="welcome">🌷 선희님을 위한 작은 맛집 지도</div>
+  <div class="kicker">A LITTLE PLACE JUST FOR SUNHEE</div>
+  <h1>선희님,<br>오늘은 뭐가 당기세요?</h1>
+  <p>오늘의 기분에 맞는 맛있는 한 끼와<br>기분 좋은 카페를 찾아드릴게요.</p>
+</section>
+
+<form class="search" id="searchForm">
+  <span>⌕</span>
+  <input id="searchInput" type="search" placeholder="가게명, 메뉴, 키워드 검색">
+  <button class="btn primary" type="submit">검색</button>
+</form>
+
+<div class="quick">
+  <button class="btn" type="button" data-query="국밥"># 국밥</button>
+  <button class="btn" type="button" data-query="마라"># 마라</button>
+  <button class="btn" type="button" data-query="돈까스"># 돈까스</button>
+  <button class="btn" type="button" data-query="파스타"># 파스타</button>
+  <button class="btn" type="button" data-query="디저트"># 디저트</button>
+  <button class="btn" type="button" data-query="커피"># 커피</button>
+</div>
+
+<nav class="tabs">
+  <button class="tab active" type="button" data-kind="food">🍽️ 음식점</button>
+  <button class="tab" type="button" data-kind="cafe">☕ 카페</button>
+</nav>
+
+<div class="layout">
+  <aside class="filters">
+    <div class="filter-head">
+      <span>🌼 선희의 취향 찾기</span>
+      <button class="reset" id="reset">초기화</button>
     </div>
-    <div class="origin">📍 동아백화점 쇼핑점 기준</div>
-  </header>
 
-  <section class="hero">
-    <div class="welcome">🌷 선희님을 위한 작은 맛집 지도</div>
-    <div class="kicker">A LITTLE PLACE JUST FOR SUNHEE</div>
-    <h1>선희님,<br>오늘은 뭐가 당기세요?</h1>
-    <p>오늘의 기분에 맞는 맛있는 한 끼와<br>기분 좋은 카페를 찾아드릴게요.</p>
-  </section>
+    <section class="group">
+      <div class="label">지금 선희의 마음은 어떤 맛?</div>
 
-  <form class="search" id="searchForm">
-    <span>⌕</span>
-    <input id="searchInput" type="search" placeholder="가게명, 메뉴, 키워드 검색">
-    <button class="btn primary" type="submit">검색</button>
-  </form>
-
-  <div class="quick">
-    <button class="btn" type="button" data-query="국밥"># 국밥</button>
-    <button class="btn" type="button" data-query="마라"># 마라</button>
-    <button class="btn" type="button" data-query="돈까스"># 돈까스</button>
-    <button class="btn" type="button" data-query="파스타"># 파스타</button>
-    <button class="btn" type="button" data-query="디저트"># 디저트</button>
-    <button class="btn" type="button" data-query="커피"># 커피</button>
-  </div>
-
-  <nav class="tabs">
-    <button class="tab active" type="button" data-kind="food">🍽️ 음식점</button>
-    <button class="tab" type="button" data-kind="cafe">☕ 카페</button>
-  </nav>
-
-  <div class="layout">
-
-    <aside class="filters">
-      <div class="filter-head">
-        <span>🌼 선희의 취향 찾기</span>
-        <button class="reset" id="reset">초기화</button>
+      <div class="chips" id="foodFilters">
+        <button class="chip active" type="button" data-term="">✨ 다 좋아요</button>
+        <button class="chip" type="button" data-term="덮밥">🍯 단짠단짠</button>
+        <button class="chip" type="button" data-term="매운 음식">🌶️ 맵부심 충전</button>
+        <button class="chip" type="button" data-term="국밥">🍲 뜨끈한 국물</button>
+        <button class="chip" type="button" data-term="삼겹살">🥩 고기 없인 못 살아</button>
+        <button class="chip" type="button" data-term="국수">🍜 후루룩 면치기</button>
+        <button class="chip" type="button" data-term="돈까스">🍗 바삭함이 최고</button>
+        <button class="chip" type="button" data-term="백반">🍚 든든하게 밥심</button>
+        <button class="chip" type="button" data-term="치즈">🧀 고소함에 풍덩</button>
+        <button class="chip" type="button" data-term="퓨전 음식">🥢 오늘은 별미</button>
+        <button class="chip" type="button" data-term="샐러드">🥗 가볍게 먹고 싶어</button>
       </div>
 
-      <section class="group">
-        <div class="label">오늘은 어떤 맛이 좋으세요?</div>
-
-        <div class="chips" id="foodFilters">
-          <button class="chip active" type="button" data-term="">전체</button>
-          <button class="chip" type="button" data-term="매운 음식">🌶️ 매운맛</button>
-          <button class="chip" type="button" data-term="국밥">🍲 국물</button>
-          <button class="chip" type="button" data-term="백반">🍚 든든함</button>
-          <button class="chip" type="button" data-term="돈까스">🍗 바삭함</button>
-          <button class="chip" type="button" data-term="덮밥">🍯 단짠단짠</button>
-          <button class="chip" type="button" data-term="파스타">🍋 파스타</button>
-        </div>
-
-        <div class="chips hidden" id="cafeFilters">
-          <button class="chip active" type="button" data-term="">전체</button>
-          <button class="chip" type="button" data-term="디저트 카페">🍰 디저트</button>
-          <button class="chip" type="button" data-term="분위기 좋은 카페">🌿 분위기</button>
-          <button class="chip" type="button" data-term="커피">☕ 음료</button>
-          <button class="chip" type="button" data-term="베이커리 카페">🥐 베이커리</button>
-        </div>
-      </section>
-
-      <section class="group">
-        <div class="label">얼마나 걸어볼까요?</div>
-        <div class="walks">
-          <button class="walk active" type="button" data-radius="700">10분 이내</button>
-          <button class="walk" type="button" data-radius="1400">20분 이내</button>
-          <button class="walk" type="button" data-radius="2100">30분 이내</button>
-        </div>
-        <p class="note">
-          출발점: 동아백화점 쇼핑점<br>
-          직선거리 기준으로 도보 시간을 추정해. 실제 경로와 다를 수 있어.
-        </p>
-      </section>
-
-      <section class="group">
-        <div class="label">맛집 정렬</div>
-        <select id="sort" class="btn" style="width:100%">
-          <option value="distance">가까운 순</option>
-          <option value="name">가게명순</option>
-        </select>
-      </section>
-    </aside>
-
-    <main>
-      <div class="heading">
-        <div>
-          <h2 id="title">주변 음식점</h2>
-          <div class="sub" id="summary">실제 장소 검색 준비 중</div>
-        </div>
+      <div class="chips hidden" id="cafeFilters">
+        <button class="chip active" type="button" data-term="">✨ 다 좋아요</button>
+        <button class="chip" type="button" data-term="케이크">🍰 당 충전이 필요해</button>
+        <button class="chip" type="button" data-term="베이커리">🥐 빵순이 모드</button>
+        <button class="chip" type="button" data-term="디저트 카페">📸 사진 찍기 좋은 곳</button>
+        <button class="chip" type="button" data-term="커피">☕ 커피 한 잔의 여유</button>
+        <button class="chip" type="button" data-term="전통차">🍵 차분하게 힐링</button>
+        <button class="chip" type="button" data-term="빙수">🍧 시원달달하게</button>
+        <button class="chip" type="button" data-term="정원 카페">🌿 초록초록 힐링</button>
+        <button class="chip" type="button" data-term="분위기 좋은 카페">🪟 분위기에 취하고 싶어</button>
       </div>
 
-      <div class="notice" id="status" role="status">
-        카카오 장소 검색을 준비하고 있어.
+      <button class="btn surprise" id="surprise" type="button">
+        🎁 오늘은 아무거나! 랜덤으로 골라줘
+      </button>
+    </section>
+
+    <section class="group">
+      <div class="label">얼마나 걸어볼까요?</div>
+      <div class="walks">
+        <button class="walk active" type="button" data-radius="700">10분 이내</button>
+        <button class="walk" type="button" data-radius="1400">20분 이내</button>
+        <button class="walk" type="button" data-radius="2100">30분 이내</button>
       </div>
+      <p class="note">
+        출발점: 동아백화점 쇼핑점<br>
+        직선거리 기준으로 도보 시간을 추정해. 실제 경로와 다를 수 있어.
+      </p>
+    </section>
 
-      <div id="map"></div>
-      <section class="results" id="results" aria-live="polite"></section>
-    </main>
+    <section class="group">
+      <div class="label">맛집 정렬</div>
+      <select id="sort" class="btn" style="width:100%">
+        <option value="distance">가까운 순</option>
+        <option value="name">가게명순</option>
+      </select>
+    </section>
+  </aside>
 
-  </div>
+  <main>
+    <div class="heading">
+      <div>
+        <h2 id="title">주변 음식점</h2>
+        <div class="sub" id="summary">실제 장소 검색 준비 중</div>
+      </div>
+    </div>
 
-  <p style="text-align:center;color:#b28b99;font-size:11px;margin:24px 0 8px;">
-    🌸 선희님만을 위해 준비한 맛있는 하루 ♡
-  </p>
+    <div class="notice" id="status" role="status">
+      카카오 장소 검색을 준비하고 있어.
+    </div>
 
+    <div id="map"></div>
+    <section class="results" id="results" aria-live="polite"></section>
+  </main>
+</div>
+
+<p style="text-align:center;color:#b28b99;font-size:11px;margin:24px 0 8px;">
+  🌸 선희님만을 위해 준비한 맛있는 하루 ♡
+</p>
 </div>
 
 <nav class="bottom">
@@ -382,10 +322,7 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
   }
 
   function distanceMeters(p) {
-    if (p.distance !== undefined && p.distance !== "") {
-      return Number(p.distance);
-    }
-
+    if (p.distance !== undefined && p.distance !== "") return Number(p.distance);
     if (!origin) return Infinity;
 
     const rad = d => d * Math.PI / 180;
@@ -529,7 +466,6 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
 
           <div class="cardfoot">
             <div class="distance">📍 약 ${distance}m · 🚶 약 ${minutes}분(추정)</div>
-
             <div class="actions">
               <a class="link" href="${escapeHtml(mapUrl)}" target="_blank" rel="noopener">
                 카카오 장소 정보 ↗
@@ -669,6 +605,21 @@ window.KAKAO_JS_KEY = "여기에_새_JavaScript_키_입력";
 
   $("#sort").addEventListener("change", e => {
     sort = e.target.value;
+    render();
+  });
+
+  $("#surprise").addEventListener("click", () => {
+    if (!currentPlaces.some(p => p.meters <= radius)) {
+      alert("먼저 주변 장소를 불러와 줘!");
+      return;
+    }
+
+    page = "random";
+
+    $$(".nav").forEach(n =>
+      n.classList.toggle("active", n.dataset.page === "random")
+    );
+
     render();
   });
 
